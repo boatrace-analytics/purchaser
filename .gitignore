@@ -1,0 +1,8 @@
+/build
+/production
+/vendor
+.phpunit.result.cache
+chromedriver.exe
+composer.lock
+composer.phar
+selenium-server-standalone.jar
