@@ -141,6 +141,7 @@ class MainPurchaser
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::name('authPassword')));
         $this->driver->findElement(WebDriverBy::name('authPassword'))->sendKeys($this->authenticationPassword);
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('loginButton')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('loginButton')));
         $this->driver->findElement(WebDriverBy::id('loginButton'))->submit();
 
@@ -148,13 +149,16 @@ class MainPurchaser
         $this->driver->switchTo()->window($handles[array_key_last($handles)]);
 
         try {
+            $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('newsoverviewdispCloseButton')));
             $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('newsoverviewdispCloseButton')));
             $this->driver->findElement(WebDriverBy::id('newsoverviewdispCloseButton'))->click();
         } catch (NoSuchElementException $exception) {}
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('gnavi01')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('gnavi01')));
         $this->driver->findElement(WebDriverBy::id('gnavi01'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('charge')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('charge')));
         $this->driver->findElement(WebDriverBy::id('charge'))->click();
 
@@ -164,18 +168,23 @@ class MainPurchaser
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('chargeBetPassword')));
         $this->driver->findElement(WebDriverBy::id('chargeBetPassword'))->sendKeys($this->purchasePassword);
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('executeCharge')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('executeCharge')));
         $this->driver->findElement(WebDriverBy::id('executeCharge'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('ok')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('ok')));
         $this->driver->findElement(WebDriverBy::linkText('OK'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('closeChargecomp')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('closeChargecomp')));
         $this->driver->findElement(WebDriverBy::id('closeChargecomp'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('jyo' . sprintf('%02d', $stadiumId))));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('jyo' . sprintf('%02d', $stadiumId))));
         $this->driver->findElement(WebDriverBy::id('jyo' . sprintf('%02d', $stadiumId)))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('selRaceNo' . sprintf('%02d', $raceNumber))));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('selRaceNo' . sprintf('%02d', $raceNumber))));
         $this->driver->findElement(WebDriverBy::id('selRaceNo' . sprintf('%02d', $raceNumber)))->click();
 
@@ -183,41 +192,52 @@ class MainPurchaser
             throw new PurchaserException;
         }
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('betkati6')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('betkati6')));
         $this->driver->findElement(WebDriverBy::id('betkati6'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('betway4')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('betway4')));
         $this->driver->findElement(WebDriverBy::id('betway4'))->click();
 
         foreach ($forecasts as $forecast) {
+            $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('.x' . substr($forecast, 0, 1) . '.y1')));
             $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::cssSelector('.x' . substr($forecast, 0, 1) . '.y1')));
             $this->driver->findElement(WebDriverBy::cssSelector('.x' . substr($forecast, 0, 1) . '.y1'))->click();
 
+            $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('.x' . substr($forecast, 1, 1) . '.y1')));
             $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::cssSelector('.x' . substr($forecast, 1, 1) . '.y1')));
             $this->driver->findElement(WebDriverBy::cssSelector('.x' . substr($forecast, 1, 1) . '.y2'))->click();
 
+            $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('.x' . substr($forecast, 2, 1) . '.y1')));
             $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::cssSelector('.x' . substr($forecast, 2, 1) . '.y1')));
             $this->driver->findElement(WebDriverBy::cssSelector('.x' . substr($forecast, 2, 1) . '.y3'))->click();
 
+            $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('formaAmountBtn')));
             $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('formaAmountBtn')));
             $this->driver->findElement(WebDriverBy::id('formaAmountBtn'))->click();
         }
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('.betlistbtn.combi')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::cssSelector('.betlistbtn.combi')));
         $this->driver->findElement(WebDriverBy::cssSelector('.betlistbtn.combi'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('ok')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('ok')));
         $this->driver->findElement(WebDriverBy::id('ok'))->click();
 
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('distamoTotal')));
         $this->driver->findElement(WebDriverBy::id('distamoTotal'))->sendKeys($this->depositAmount / 100);
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('execDistamo')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('execDistamo')));
         $this->driver->findElement(WebDriverBy::id('execDistamo'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('updateDistamo')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('updateDistamo')));
         $this->driver->findElement(WebDriverBy::id('updateDistamo'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::cssSelector('.btnSubmit')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::cssSelector('.btnSubmit')));
         $this->driver->findElement(WebDriverBy::cssSelector('.btnSubmit'))->click();
 
@@ -227,9 +247,11 @@ class MainPurchaser
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('pass')));
         $this->driver->findElement(WebDriverBy::id('pass'))->sendKeys($this->purchasePassword);
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('submitBet')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('submitBet')));
         $this->driver->findElement(WebDriverBy::id('submitBet'))->click();
 
+        $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::id('ok')));
         $this->driver->wait(10, 500)->until(WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::id('ok')));
         $this->driver->findElement(WebDriverBy::id('ok'))->click();
 
